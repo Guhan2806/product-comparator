@@ -5,7 +5,6 @@ const router =express.Router()
 var flip_res=[]
 var amaz_res=[]
 function scrap_flipkart(result){
-    flip_res.length=0
     var temp=result.split(" ")
     var flip_link= 'https://www.flipkart.com/search?q='
     flip_link=flip_link+temp[0]
