@@ -1,10 +1,11 @@
 const express=require('express')
 const request = require('request');
 const cheerio = require('cheerio');
+var deasync = require('deasync')
 const router =express.Router()
 var flip_res=[]
 var amaz_res=[]
-function scrap_flipkart(result){
+ function scrap_flipkart(result){
     var temp=result.split(" ")
     var flip_link= 'https://www.flipkart.com/search?q='
     flip_link=flip_link+temp[0]
@@ -15,7 +16,7 @@ function scrap_flipkart(result){
     request(flip_link, (error, response, html) => {
   if (!error && response.statusCode == 200) {
     const $ = cheerio.load(html);
-    $('._2kHMtA').each((i,el)=>{
+     $('._2kHMtA').each((i,el)=>{
        const title=$(el).find('._4rR01T').html()
        const price=$(el).find('._30jeq3').html()
        const img=$(el).find('._396cs4._3exPp9').attr().src
@@ -23,11 +24,12 @@ function scrap_flipkart(result){
        const f_link='https://www.flipkart.com'+link
       flip_res.push({title,price,img,f_link})
     })
-    console.log(flip_res)
-    return flip_res
     }
   }
 )
+while(flip_res.length ==0) {
+  deasync.runLoopOnce();
+}
 return flip_res
 }
 function scrap_amazon(result)
@@ -49,26 +51,31 @@ function scrap_amazon(result)
       .html()
       const img=$(el).find('.s-image').attr().src
       const link=$(el).find('.a-size-base.a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal').attr()
+      var a_link
       if(link)
       {
-        a_link='https://www.amazon.in'+link.href
+         a_link='https://www.amazon.in'+link.href
       }
       if(title!=null &&price!=null)
-      amaz_res.push({title,price,img,a_link})
+      {
+        amaz_res.push({title,price,img,a_link})
+      }
     })
-    return amaz_res
     }
-    return amaz_res
-});
+})
+while(amaz_res.length ==0) {
+  deasync.runLoopOnce();
+}
 return amaz_res
 }
-router.post('/result',(req,res)=>{
-    const result=req.body.res
-    const f_res=scrap_flipkart(result)
-    const a_res=scrap_amazon(result)
-    console.log(f_res)
+router.post('/result', async (req,res)=>{
+    const result=  req.body.res
+    const f_res= scrap_flipkart(result)
+    const a_res= scrap_amazon(result)
     res.json({flipkart:f_res,amazon:a_res})
-    amaz_res.length=0
     flip_res.length=0
+    amaz_res.length=0
+    a_res.length=0
+    f_res.length=0
 })
 module.exports=router
