@@ -4,6 +4,7 @@ import {Feedback} from './pages/Feedback'
 import Result from './pages/Result'
 import React from 'react'
 import Home from './pages/Home'
+import {QueryClient,QueryClientProvider} from '@tanstack/react-query'
 function App() {
   return (
     <div className="App">
