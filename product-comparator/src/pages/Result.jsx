@@ -1,32 +1,31 @@
 import React from 'react'
 import { useLocation,Link} from 'react-router-dom';
 import axios from 'axios'
-import { useEffect } from 'react';
 import { useState } from 'react';
+import {useQuery} from '@tanstack/react-query'
 const Result = () => {
 let location=useLocation()
 const [flipkart,setflipkart]=useState([])
 const[amazon,setamazon]=useState([])
 const[sel_flip,setsel_flip]=useState([])
 const[sel_amaz,setsel_amaz]=useState([])
-const fetchdata=()=>{
-  axios.post('http://localhost:5000/result',{res:location.state.search}).then(function (response) {
-    console.log(response);
-    setflipkart(response.data.flipkart)
-    setamazon(response.data.amazon)
-    setsel_flip(response.data.flipkart[0])
-    setsel_amaz(response.data.amazon[0])
-  })
-}
-useEffect(()=>{
-  fetchdata()
-},[])
+var {isFetching}=useQuery(['res'],()=>{
+  return (axios.post('http://localhost:5000/result',{res:location.state.search}).then((res)=>{
+    setflipkart(res.data.flipkart)
+    setamazon(res.data.amazon)
+    setsel_flip(res.data.flipkart[0])
+    setsel_amaz(res.data.amazon[0])
+  }).then(()=>{return 1}))})
 const handleChange_f = (event) => {
   setsel_flip(flipkart[event.target.value]) ;
 };
 const handleChange_a = (event) => {
   setsel_amaz(amazon[event.target.value]) ;
 };
+if(isFetching)
+{
+ return <h1>loading</h1>
+}
   return (
     <div>
       <div className='nav'>
