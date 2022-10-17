@@ -1,5 +1,5 @@
 import './App.css'
-import {BrowserRouter,Link,Routes,Route} from 'react-router-dom'
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import {Feedback} from './pages/Feedback'
 import Result from './pages/Result'
 import React from 'react'
@@ -18,18 +18,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path='/result' element={<Result/>}/>
+            <Route path="/Feedback" element={<Feedback/>}/>
           </Routes>
           </BrowserRouter>
           </QueryClientProvider>
-          <br/>
-          <footer>
-            <BrowserRouter>
-              <Link to="/Feedback">Feedback</Link>
-              <Routes>
-                <Route path="/Feedback" element={<Feedback/>}/>
-              </Routes>
-            </BrowserRouter>
-          </footer>
     </div>
   );
 }
