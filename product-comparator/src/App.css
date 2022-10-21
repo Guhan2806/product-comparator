@@ -107,6 +107,22 @@
   border-radius: 10px;
   height: 5%;
 }
+.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+.scrl_item{
+  display: inline-block;
+  background-color: grey;
+  border: 2px solid blue;
+  padding: 0 20px 30px 30px;
+}
+::-webkit-scrollbar {
+  height: 10px;              /* height of horizontal scrollbar */
+  width: 10px;               /* width of vertical scrollbar */
+  border: 1px solid #d5d5d5;
+}
 .loader {
   border: 16px solid #f3f3f3;
   position: absolute;

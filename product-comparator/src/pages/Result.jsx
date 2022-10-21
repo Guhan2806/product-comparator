@@ -28,68 +28,91 @@ const Result = () => {
   const handleChange_a = (event) => {
     setsel_amaz(amazon[event.target.value]);
   };
-  if (isFetching) {
-    return <div className="loader"></div> 
-  }
   return (
     <div>
-      <div className="container">
-        <table>
-          <thead>
-          <tr>
-            <th>Flipkart</th>
-            <th>Amazon</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td><div className="container-item">
-          {
-            <label>
-              <select className="dropdown" onChange={handleChange_f}>
-                {flipkart.map((flip, i) => (
-                  <option key={i} value={i}>
-                    {flip.title}
-                  </option>
-                ))}
-              </select>
-            </label>
-          }
-          <br />
-          <img src={sel_flip.img} alt="Product" className="img" />
-          <p className="price">Price: {sel_flip.price}</p>
-          <a className="visit" href={sel_flip.f_link} target="_blank" rel="noopener noreferrer">
-            Visit
-          </a>
-        </div></td>
-        <td>
-        <div className="container-item">
-          {
-            <label>
-              <select className="dropdown" onChange={handleChange_a}>
-                {amazon.map((amaz, i) => (
-                  <option key={i} value={i}>
-                    {amaz.title}
-                  </option>
-                ))}
-              </select>
-            </label>
-          }
-          <br />
-          <img src={sel_amaz.img} alt="Product" className="img" />
-          <p className="price">Price: {'₹'+sel_amaz.price}</p>
-          <a className="visit" href={sel_amaz.a_link} target="_blank" rel="noopener noreferrer">
-            Visit
-          </a>
+      {isFetching ? (
+        <div className="loader"></div>
+      ) : (
+        <div>
+          <div className="container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Flipkart</th>
+                  <th>Amazon</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div className="container-item">
+                      {
+                        <label>
+                          <select
+                            className="dropdown"
+                            onChange={handleChange_f}
+                          >
+                            {flipkart.map((flip, i) => (
+                              <option key={i} value={i}>
+                                {flip.title}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      }
+                      <br />
+                      <img src={sel_flip.img} alt="Product" className="img" />
+                      <p className="price">Price: {sel_flip.price}</p>
+                      <a
+                        className="visit"
+                        href={sel_flip.f_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Visit
+                      </a>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="container-item">
+                      {
+                        <label>
+                          <select
+                            className="dropdown"
+                            onChange={handleChange_a}
+                          >
+                            {amazon.map((amaz, i) => (
+                              <option key={i} value={i}>
+                                {amaz.title}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      }
+                      <br />
+                      <img src={sel_amaz.img} alt="Product" className="img" />
+                      <p className="price">Price: {"₹" + sel_amaz.price}</p>
+                      <a
+                        className="visit"
+                        href={sel_amaz.a_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Visit
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <footer>
+            <NavLink id="foot" to="/Feedback">
+              Feedback
+            </NavLink>
+          </footer>
         </div>
-        </td>
-          </tr>
-          </tbody>
-    </table>    
-      </div>
-      <footer>
-          <NavLink id="foot" to="/Feedback">Feedback</NavLink>
-      </footer>
+      )}
     </div>
   );
 };
