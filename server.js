@@ -13,7 +13,8 @@ const corsOptions ={
 }
 app.use(cors(corsOptions));
 app.use(express.static('product-comparator'));
-app.use('/',require('./routes/result'))
+app.use('/result',require('./routes/result'))
+app.use('/home',require('./routes/home'))
 const PORT=5000
 app.use(cors());
 app.listen(PORT,console.log("Success"))

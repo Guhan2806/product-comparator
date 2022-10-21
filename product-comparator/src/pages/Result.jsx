@@ -33,9 +33,6 @@ const Result = () => {
   }
   return (
     <div>
-      <div className="nav">
-        <NavLink  id='home' to="/">Home</NavLink>
-      </div>
       <div className="container">
         <table>
           <thead>
