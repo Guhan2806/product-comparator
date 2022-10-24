@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { send } from "emailjs-com";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const Feedback = () => {
   const [feedback, setfeedback] = useState("");
   const [email, setemail] = useState("");
@@ -12,8 +14,12 @@ export const Feedback = () => {
       { from_name: name, to_name: "Guhan", message: feedback, reply_to: email },
       "TOHmTw5KrSU9KZG3m"
     )
-      .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
+      .then(() => {
+        toast.success("Thank You For your Feedback", {
+          position: toast.POSITION.BOTTOM_CENTER,
+          autoClose:3000,
+          theme:'colored'
+        })
       })
       .catch((err) => {
         console.log("FAILED...", err);
@@ -21,8 +27,9 @@ export const Feedback = () => {
   }
   return (
     <div className="feedback-container">
-      <form  onSubmit={send_e}>
-      <label htmlFor="name">Name</label>
+      
+      <form  onSubmit={send_e} className="feedback-form">
+      <label htmlFor="name" className="feedback-name">Name</label>
       <input
         type="text"
         className="name"
@@ -32,7 +39,7 @@ export const Feedback = () => {
         placeholder="Enter your name"
       />
       <br />
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email" className="feedback-email">Email</label>
       <input
         type="email" className="email"
         required={true}
@@ -42,7 +49,7 @@ export const Feedback = () => {
         placeholder="Enter your email"
       />
       <br />
-      <label htmlFor="feedback">Feedback</label>
+      <label htmlFor="feedback" className="feedback">Feedback</label>
       <textarea
         name="feedback"
         id="feedback"
@@ -54,6 +61,7 @@ export const Feedback = () => {
         Submit
       </button>
       </form>
+      <ToastContainer className='toast'/>
     </div>
   );
 };

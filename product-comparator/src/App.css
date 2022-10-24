@@ -14,16 +14,26 @@
 }
 .btn {
   position: relative;
+
   width: 5%;
-  height: 30px;
-  border-radius: 10px;
+  height: 35px;
+  left: 35%;
+  background-color: silver;
   border-color: silver;
+}
+.icon{
+  background-color: silver;
 }
 .title {
   margin: 0;
   padding: 0;
   background-color: rgb(11, 11, 27);
   color: beige;
+}
+.title-off{
+  margin: 0;
+  background-color:white; 
+  color: rgb(34, 29, 29);
 }
 .container {
   display: flex;
@@ -46,6 +56,13 @@
   width: 150px;
   margin-top: 10px;
 }
+
+.img-off{
+  position: relative;
+  height: 150px;
+  width: 150px;
+  
+}
 .container-item {
   display: flex;
   flex-direction: column;
@@ -67,6 +84,11 @@
   font-weight: bolder;
   color: rgb(14, 36, 238);
 }
+.price-off{
+  margin: 0;
+  background-color:white;
+  color:rgb(34, 29, 29) ;
+}
 .visit {
   text-decoration: none;
   background-color: blue;
@@ -77,6 +99,15 @@
 }
 .visit:hover {
   background-color: rgba(23, 19, 231, 0.705);
+}
+.visit-off{
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 14rem;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
 }
 .home {
   margin-top: 15px;
@@ -99,28 +130,62 @@
   height: 100%;
   width: 100%;
 }
+.feedback-form{
+  position: relative;
+  height: 100%;
+}
 .feedback-submit{
   position: relative;
-  top:60%;
+  top:25%;
   left: 28%;
   background-color:  #d1d1d1;
   border-radius: 10px;
   height: 5%;
+}
+.offer-container{
+  
+  padding: 3rem 0;
+}
+.offer-title{
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+  margin: 0;
+  color:#d5d5d5;
 }
 .scrollmenu {
   background-color: #333;
   overflow: auto;
   white-space: nowrap;
 }
+.scroll-title{
+  color: rgb(128, 121, 146);
+  font-size: large;
+}
 .scrl_item{
   display: inline-block;
-  background-color: grey;
-  border: 2px solid blue;
-  padding: 0 20px 30px 30px;
+  background-color: white;
+  border: 1px solid rgb(145, 138, 138);
+  padding: 0 20px 0 20px;
+}
+.feedback-name{
+position: relative;
+left: 25%;
+color: white;
+}
+.feedback-email{
+  position: relative;
+left: 25%;
+color: white;
+}
+.feedback{
+  position: relative;
+left: 25%;
+color: white;
 }
 ::-webkit-scrollbar {
-  height: 10px;              /* height of horizontal scrollbar */
-  width: 10px;               /* width of vertical scrollbar */
+  height: 4px;              /* height of horizontal scrollbar */
+  width: 6px;               /* width of vertical scrollbar */
   border: 1px solid #d5d5d5;
 }
 .loader {
@@ -202,9 +267,4 @@ th {
 }
 table {
   width: 100%;
-}
-label{
-  position: relative;
-  color: white;
-  left: 20%;
 }

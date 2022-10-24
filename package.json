@@ -21,6 +21,7 @@
     "nodemailer": "^6.8.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-notifications": "^1.7.4",
     "request": "^2.88.2"
   },
   "devDependencies": {

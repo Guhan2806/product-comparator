@@ -53,7 +53,7 @@ function scrap_amazon() {
   }
   return amaz_res;
 }
-router.get("/", async (req, res) => {
+router.get("/",  (req, res) => {
   const result = req.body.res;
   const f_res = scrap_flipkart(result);
   const a_res = scrap_amazon(result);
