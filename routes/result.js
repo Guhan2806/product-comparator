@@ -18,7 +18,7 @@ function scrap_flipkart(result) {
       $("._2kHMtA").each((i, el) => {
         const title = $(el).find("._4rR01T").html();
         const price = $(el).find("._30jeq3").html();
-        const img = $(el).find("._396cs4._3exPp9").attr().src;
+        const img = $(el).find("._396cs4").attr().src;
         const link = $(el).find("._1fQZEK").attr().href;
         const f_link = "https://www.flipkart.com" + link;
         flip_res.push({ title, price, img, f_link });

@@ -11,7 +11,7 @@ const Home = () => {
   const [flipkart, setflipkart] = useState([]);
   const [amazon, setamazon] = useState([]);
   const navigate = useNavigate();
-  var { isFetching,remove } = useQuery(["off"], async () => {
+  var { isFetching, remove } = useQuery(["off"], async () => {
     return axios
       .get("http://localhost:5000/home")
       .then((res) => {
@@ -23,7 +23,9 @@ const Home = () => {
         return 1;
       });
   });
-  useEffect(()=>{return()=>remove()},[])
+  useEffect(() => {
+    return () => remove();
+  }, []);
   function Result(e) {
     e.preventDefault();
     navigate("/result", { state: { search } });
